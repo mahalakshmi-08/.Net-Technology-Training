@@ -36,3 +36,17 @@ select first_name from employee where department_id = (select id from department
 
 --15.	Write a query to display the first name of all employees who are managers. Display the records sorted in ascending order based on first name.(Q5)
 select first_name from employee where id IN (select employee_id from manager)ORDER BY first_name;
+
+--how many employees are available in it department
+select count(*) as emp_count from employee where department_id in (select id from department where name='IT');
+select department_id, max(salary)from employee group by department_id;
+
+--write a query to display the department id and the number of managers in the department. display the records sorted in ascending order
+--based on department name.
+select department_id , count(employee_id) from manager group by department_id;
+
+
+--7.	Write a query to display the department name and the number of managers in the department. 
+--Display the records sorted in ascending order based on department name. 
+--Give an alias to the number of managers as manager_count.(Q15).
+select name, count(id) as Manager_count from department group by name ;
